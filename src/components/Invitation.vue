@@ -12,14 +12,8 @@
             <p v-if="day">Waktu: {{ day }}</p>
             <p>Tempat: KUA Kec. Barangin, Kota Sawahlunto</p>
             <div class="content-inside-bless">
-              <input
-                placeholder="Tulis ucapan Anda"
-                @keyup.enter="sendBarrage"
-                @focus="isFocused = true"
-                @blur="(isFocused = false), (hasEntered = false)"
-                v-model="wish"
-                ref="wishInput"
-              />
+              <input placeholder="Tulis ucapan Anda" @keyup.enter="sendBarrage" @focus="isFocused = true"
+                @blur="(isFocused = false), (hasEntered = false)" v-model="wish" ref="wishInput" />
               <p v-if="!wish && isFocused && hasEntered">
                 Silakan ketik ucapan
               </p>
@@ -32,12 +26,8 @@
         </div>
         <div class="cover-inside-left" :class="{ opening: isOpening }"></div>
         <div class="cover-inside-right" :class="{ opening: isOpening }"></div>
-        <img
-          class="cover-inside-seal"
-          src="../images/seal.png"
-          @click="openInvitation"
-          :class="{ 'invitation-flight': isOpening }"
-        />
+        <img class="cover-inside-seal" src="../images/seal.png" @click="openInvitation"
+          :class="{ 'invitation-flight': isOpening }" />
       </div>
     </div>
   </div>
@@ -51,6 +41,8 @@ function getQueryString(key) {
   return null;
 }
 
+const sound = require("@/music/sound.mp3");
+
 export default {
   props: ["canOpen"],
   data() {
@@ -62,19 +54,20 @@ export default {
       self: "Muhammad Fauzi",
       honey: "Zahara Hayrina C. (Eva)",
       day: "Rabu, 05 Juli 2023 14:00 WIB",
+      sound: sound,
+      note: null,
     };
   },
   created() {
-    // this.self = getQueryString("self");
-    // this.honey = getQueryString("honey");
-    // this.day = getQueryString("day");
+    this.note = new Audio(this.sound);
   },
   methods: {
-    // 打开邀请函
     openInvitation() {
+      if (this.note) this.note.play();
       this.isOpening = true;
     },
     closeInvitation() {
+      if (this.note) this.note.pause();
       this.isOpening = false;
       setTimeout(() => {
         this.$emit("onClose");
@@ -88,6 +81,7 @@ export default {
           return;
         }
         this.isOpening = false;
+        if (this.note) this.note.pause();
         this.$refs.wishInput.blur();
         setTimeout(() => {
           this.$emit("sendBarrage", this.wish);
@@ -95,15 +89,14 @@ export default {
       });
 
       var decodeFrom = "";
-      if(getQueryString('t')) {
-        decodeFrom = atob(decodeURIComponent(getQueryString('t')));
+      if (getQueryString("t")) {
+        decodeFrom = atob(decodeURIComponent(getQueryString("t")));
       }
-    
 
       const requestOptions = {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ dari: decodeFrom, ucapan: this.wish, }),
+        body: JSON.stringify({ dari: decodeFrom, ucapan: this.wish }),
       };
       fetch("https://import.the-elxr.com/api/ucapan", requestOptions)
         .then((response) => response.json())
@@ -128,26 +121,29 @@ export default {
   opacity: 0;
   transition: transform 0.8s cubic-bezier(0.26, 1.84, 0.39, 0.61),
     opacity 0.5s linear;
-  -webkit-transition: -webkit-transform 0.8s
-      cubic-bezier(0.26, 1.84, 0.39, 0.61),
+  -webkit-transition: -webkit-transform 0.8s cubic-bezier(0.26, 1.84, 0.39, 0.61),
     opacity 0.5s linear;
   background-size: 100%;
   overflow: hidden;
+
   &.invitation-bounce {
     opacity: 1;
     transform: scale(1);
     -webkit-transform: scale(1);
   }
+
   .invitation-container {
     position: relative;
     width: 100%;
     height: 100%;
     transition: transform 0.6s cubic-bezier(0.4, 0, 1, 1);
     -webkit-transition: -webkit-transform 0.6s cubic-bezier(0.4, 0, 1, 1);
+
     &.invitation-down {
       transform: translateY(20px);
       -webkit-transform: translateY(20px);
     }
+
     .invitation-cover {
       position: absolute;
       top: 0;
@@ -158,6 +154,7 @@ export default {
       border-radius: 10px;
       perspective: 500px;
       box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.15);
+
       .cover-content {
         position: absolute;
         top: 0;
@@ -167,10 +164,12 @@ export default {
         padding: 10px 20px;
         transition: transform 0.6s cubic-bezier(0.4, 0, 1, 1);
         -webkit-transition: -webkit-transform 0.6s cubic-bezier(0.4, 0, 1, 1);
+
         &.invitation-up {
           transform: translateY(-60px);
           -webkit-transform: translateY(-60px);
         }
+
         .content-inside {
           height: 100%;
           padding: 20px;
@@ -178,16 +177,19 @@ export default {
           background-color: #fff1de;
           text-align: center;
           overflow: auto;
+
           .content-inside-photo {
             width: 100%;
             margin-bottom: 10px;
             padding: 5px;
             border: 1px solid #f7debb;
           }
+
           p {
             margin-top: 0;
             margin-bottom: 5px;
           }
+
           .content-inside-bless {
             input {
               width: 100%;
@@ -199,25 +201,31 @@ export default {
               color: #a9895d;
               background: transparent;
               font-size: 16px;
+
               &::-webkit-input-placeholder {
                 color: #e8d1b1;
                 font-size: 12px;
               }
+
               &::-moz-placeholder {
                 color: #e8d1b1;
                 font-size: 12px;
               }
+
               &:-ms-input-placeholder {
                 color: #e8d1b1;
                 font-size: 12px;
               }
+
               &:-moz-placeholder {
                 color: #e8d1b1;
                 font-size: 12px;
               }
             }
-            > div {
+
+            >div {
               display: flex;
+
               button {
                 width: 100%;
                 height: 35px;
@@ -225,13 +233,16 @@ export default {
                 background: #f7debb;
                 border: none;
                 outline: none;
+
                 &:disabled {
                   opacity: 0.8;
                 }
+
                 &:first-child {
                   margin-right: 10px;
                   flex: 1;
                 }
+
                 &:last-child {
                   width: 60px;
                   border: 1px solid #f7debb;
@@ -242,6 +253,7 @@ export default {
           }
         }
       }
+
       .cover-inside-left {
         position: absolute;
         left: 0;
@@ -256,11 +268,13 @@ export default {
         -webkit-transition: -webkit-transform 0.5s;
         transform-origin: 0 50%;
         -webkit-transform-origin: 0 50%;
+
         &.opening {
           transform: rotate3d(0, 1, 0, -140deg);
           -webkit-transform: rotate3d(0, 1, 0, -140deg);
         }
       }
+
       .cover-inside-right {
         position: absolute;
         right: 0;
@@ -275,11 +289,13 @@ export default {
         -webkit-transition: -webkit-transform 0.5s;
         transform-origin: 100% 50%;
         -webkit-transform-origin: 100% 50%;
+
         &.opening {
           transform: rotate3d(0, 1, 0, 140deg);
           -webkit-transform: rotate3d(0, 1, 0, 140deg);
         }
       }
+
       .cover-inside-seal {
         position: absolute;
         left: 70%;
@@ -292,6 +308,7 @@ export default {
         -webkit-transform-origin: 50% 50%;
         transition: all 0.8s cubic-bezier(0.4, 0, 1, 1);
         -webkit-transition: all 0.8s cubic-bezier(0.4, 0, 1, 1);
+
         &.invitation-flight {
           opacity: 0;
         }
