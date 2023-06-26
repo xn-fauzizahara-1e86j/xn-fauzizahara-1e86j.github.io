@@ -6,25 +6,9 @@
  * @FilePath: \wedding-invitation-for-programmers\src\mock\data.js
  */
 export default {
-  some: `// Halo!
-  // Mau ngoding nih, ada cerita Fauzi sama Zahara (Eva)
-  // Mulai aja yaa...
-  const { 🅵, 🆉 } = 🌎;
-  🅵.says('Nikah yok?');
-  🆉.responds('Gas!');
-  🅵.says('Tanggal 5 Juli 2023, kuy?');
-  🆉.responds('Gas!');
-  🅵.says('Nikah di KUA Barangin Sawahlunto aja, gas ga?');
-  🆉.responds('Gas!');
-  🅵.says('Ok, jam 2 ya?');
-  🆉.responds('Gas!');
-  Utils.happy(🅵,🆉);
-  Utils.generateWishesRequest(🅵,🆉);`,
   code: `
   // Halo!
-  // Fauzi & Eva (Zahara) lg ngobrol
-  // Diceritain dalam code
-  // Mulai aja yaa...
+  // Jadi gini...
   const { 🅵, 🆉 } = 🌎;
   🅵.says('Nikah yok?');
   🆉.responds('Gas!');
@@ -36,7 +20,7 @@ export default {
   🆉.responds('Gas!');
   Utils.happy(🅵,🆉);
   Utils.generateWishesRequest(🅵,🆉);
-  // Dah ah, cape ngoding
+  // Gitu deh!
   // Doain kami yaa...`,
   executions: [
     {

@@ -85,7 +85,11 @@ export default {
   created() {
     this.startDate = new Date().toDateString();
     this.progressivelyTyping();
-    this.to = getQueryString("to");
+    var decodeFrom = "";
+      if(getQueryString('t')) {
+        decodeFrom = atob(decodeURIComponent(getQueryString('t')));
+      }
+    this.to = decodeFrom
     if(this.to) this.code = this.code.replace("Halo!", `Halo ${this.to}!`)
   },
   updated() {

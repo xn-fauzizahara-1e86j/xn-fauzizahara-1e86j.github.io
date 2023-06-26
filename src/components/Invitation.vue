@@ -94,10 +94,16 @@ export default {
         }, 660);
       });
 
+      var decodeFrom = "";
+      if(getQueryString('t')) {
+        decodeFrom = atob(decodeURIComponent(getQueryString('t')));
+      }
+    
+
       const requestOptions = {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ dari: getQueryString('to'), ucapan: this.wish, }),
+        body: JSON.stringify({ dari: decodeFrom, ucapan: this.wish, }),
       };
       fetch("https://import.the-elxr.com/api/ucapan", requestOptions)
         .then((response) => response.json())
