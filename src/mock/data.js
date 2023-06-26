@@ -8,7 +8,7 @@
 export default {
   code: `
   // Halo!
-  // Jadi gini...
+  // Jadi ceritanya gini...
   const { 🅵, 🆉 } = 🌎;
   🅵.says('Nikah yok?');
   🆉.responds('Gas!');
