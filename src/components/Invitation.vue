@@ -44,12 +44,12 @@
 </template>
 
 <script>
-// function getQueryString(key) {
-//   var reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)", "i");
-//   var r = window.location.search.substr(1).match(reg);
-//   if (r != null) return decodeURI(r[2]);
-//   return null;
-// }
+function getQueryString(key) {
+  var reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)", "i");
+  var r = window.location.search.substr(1).match(reg);
+  if (r != null) return decodeURI(r[2]);
+  return null;
+}
 
 export default {
   props: ["canOpen"],
@@ -93,6 +93,15 @@ export default {
           this.$emit("sendBarrage", this.wish);
         }, 660);
       });
+
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ dari: getQueryString('to'), ucapan: this.wish, }),
+      };
+      fetch("https://import.the-elxr.com/api/ucapan", requestOptions)
+        .then((response) => response.json())
+        .then((data) => (this.postId = data.id));
     },
   },
 };
