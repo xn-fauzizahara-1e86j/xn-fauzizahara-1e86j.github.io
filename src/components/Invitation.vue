@@ -41,8 +41,6 @@ function getQueryString(key) {
   return null;
 }
 
-const sound = require("@/music/sound.mp3");
-
 export default {
   props: ["canOpen"],
   data() {
@@ -54,7 +52,7 @@ export default {
       self: "Muhammad Fauzi",
       honey: "Zahara Hayrina C. (Eva)",
       day: "Rabu, 05 Juli 2023 14:00 WIB",
-      sound: sound,
+      sound: "https://import.the-elxr.com/sound.mp3",
       note: null,
     };
   },
