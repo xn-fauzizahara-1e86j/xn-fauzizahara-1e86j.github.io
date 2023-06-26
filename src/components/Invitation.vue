@@ -4,24 +4,28 @@
       <div class="invitation-cover">
         <div class="cover-content" :class="{ 'invitation-up': isOpening }">
           <div class="content-inside">
-            <img class="content-inside-photo" src="../images/photo.jpg" />
-            <p>~~情人节快乐喔~~</p>
-            <p><b>{{self}} & {{honey}}</b></p>
-            <p v-if="day">今天是我们认识的第{{ day }}天</p>
-            <p>有{{ honey }}的日子每天都很幸福</p>
+            <img class="content-inside-photo" src="../images/photo.png" />
+            <p>~~The wedding of~~</p>
+            <p>
+              <b>{{ self }} & {{ honey }}</b>
+            </p>
+            <p v-if="day">Waktu: {{ day }}</p>
+            <p>Tempat: KUA Kec. Barangin, Kota Sawahlunto</p>
             <div class="content-inside-bless">
               <input
-                placeholder="写下你的祝福"
+                placeholder="Tulis ucapan Anda"
                 @keyup.enter="sendBarrage"
                 @focus="isFocused = true"
                 @blur="(isFocused = false), (hasEntered = false)"
                 v-model="wish"
                 ref="wishInput"
               />
-              <p v-if="!wish && isFocused && hasEntered">请输入祝福哦</p>
+              <p v-if="!wish && isFocused && hasEntered">
+                Silakan ketik ucapan
+              </p>
               <div>
-                <button @click="sendBarrage">发送祝福弹幕</button>
-                <button @click="closeInvitation">关闭</button>
+                <button @click="sendBarrage">Kirim Ucapan</button>
+                <button @click="closeInvitation">Tutup</button>
               </div>
             </div>
           </div>
@@ -40,12 +44,12 @@
 </template>
 
 <script>
-function getQueryString(key) {
-  var reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)", "i");
-  var r = window.location.search.substr(1).match(reg);
-  if (r != null) return decodeURI(r[2]);
-  return null;
-}
+// function getQueryString(key) {
+//   var reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)", "i");
+//   var r = window.location.search.substr(1).match(reg);
+//   if (r != null) return decodeURI(r[2]);
+//   return null;
+// }
 
 export default {
   props: ["canOpen"],
@@ -55,15 +59,15 @@ export default {
       wish: "",
       isFocused: false,
       hasEntered: false,
-      self: "",
-      honey: "",
-      day: ""
+      self: "Muhammad Fauzi",
+      honey: "Zahara Hayrina C. (Eva)",
+      day: "Rabu, 05 Juli 2023 14:00 WIB",
     };
   },
   created() {
-    this.self = getQueryString("self");
-    this.honey = getQueryString("honey");
-    this.day = getQueryString("day");
+    // this.self = getQueryString("self");
+    // this.honey = getQueryString("honey");
+    // this.day = getQueryString("day");
   },
   methods: {
     // 打开邀请函
@@ -135,7 +139,7 @@ export default {
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: #d65047;
+      background-color: #a0c49d;
       border-radius: 10px;
       perspective: 500px;
       box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.15);
@@ -230,7 +234,7 @@ export default {
         width: 70%;
         height: 100%;
         border-radius: 10px;
-        background-color: #d65047;
+        background-color: #a0c49d;
         box-shadow: 5px 0 10px rgba(0, 0, 0, 0.2);
         z-index: 6;
         transition: transform 0.5s;
@@ -249,7 +253,7 @@ export default {
         width: 40%;
         height: 100%;
         border-radius: 10px;
-        background-color: #d65047;
+        background-color: #a0c49d;
         box-shadow: -5px 0 10px rgba(0, 0, 0, 0.2);
         z-index: 5;
         transition: transform 0.5s;

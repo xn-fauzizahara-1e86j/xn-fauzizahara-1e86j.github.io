@@ -6,56 +6,77 @@
  * @FilePath: \wedding-invitation-for-programmers\src\mock\data.js
  */
 export default {
+  some: `// Halo!
+  // Mau ngoding nih, ada cerita Fauzi sama Zahara (Eva)
+  // Mulai aja yaa...
+  const { 🅵, 🆉 } = 🌎;
+  🅵.says('Nikah yok?');
+  🆉.responds('Gas!');
+  🅵.says('Tanggal 5 Juli 2023, kuy?');
+  🆉.responds('Gas!');
+  🅵.says('Nikah di KUA Barangin Sawahlunto aja, gas ga?');
+  🆉.responds('Gas!');
+  🅵.says('Ok, jam 2 ya?');
+  🆉.responds('Gas!');
+  Utils.happy(🅵,🆉);
+  Utils.generateWishesRequest(🅵,🆉);`,
   code: `
-// 今天是情人节
-// 我来表演写代码助助兴！
-// 呐，要开始咯...
-const { 😆, 🤗 } = 🌎;
-😆.say('情人节快乐!❤️');
-🤗.response('好喔，你也是呀！😀');
-Utils.happy(😆,🤗);
-Utils.generateInvitation(😆,🤗);
-// 好啦！写完了
-// 要开始运行咯...`,
+  // Halo!
+  // Fauzi & Eva (Zahara) lg ngobrol
+  // Diceritain dalam code
+  // Mulai aja yaa...
+  const { 🅵, 🆉 } = 🌎;
+  🅵.says('Nikah yok?');
+  🆉.responds('Gas!');
+  🅵.says('Tanggal 5 Juli 2023, kuy?');
+  🆉.responds('Gas!');
+  🅵.says('Nikah di KUA Barangin Sawahlunto aja, gas ga?');
+  🆉.responds('Gas!');
+  🅵.says('Ok, jam 2 ya?');
+  🆉.responds('Gas!');
+  Utils.happy(🅵,🆉);
+  Utils.generateWishesRequest(🅵,🆉);
+  // Dah ah, cape ngoding
+  // Doain kami yaa...`,
   executions: [
     {
-      name: "初始化",
+      name: "initializing",
       time: "",
       duration: 0,
       visible: false,
     },
     {
-      name: "解压中",
+      name: "extracting",
       time: "",
       duration: 0,
       visible: false,
     },
     {
-      name: "组装中",
+      name: "installing",
       time: "",
       duration: 0,
       visible: false,
     },
     {
-      name: "打包中",
+      name: "preparing",
       time: "",
       duration: 0,
       visible: false,
     },
     {
-      name: "微笑🙂",
+      name: "smiling 🙂",
       time: "",
       duration: 0,
       visible: false,
     },
     {
-      name: "大笑😄",
+      name: "happy 😄",
       time: "",
       duration: 0,
       visible: false,
     },
     {
-      name: "编译中...",
+      name: "compiling...",
       time: "",
       visible: false,
     },
