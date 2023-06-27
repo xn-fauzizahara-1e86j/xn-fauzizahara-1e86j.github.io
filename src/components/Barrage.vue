@@ -10,7 +10,7 @@
       ref="barrageFirst"
       :style="{ transform: 'translate(' + initialOffset + 'px)', top: '10px' }"
     >
-      <span class="mine">{{ wish }}</span>
+      <span v-if="wish" class="mine">{{ wish }}</span>
       <span v-for="(item, index) in filterBarrage(barrages, 0)" :key="index">{{
         item.ucapan
       }}</span>

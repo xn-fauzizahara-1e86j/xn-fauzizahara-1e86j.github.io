@@ -41,7 +41,7 @@
     />
     <invitation
       :canOpen="canOpen"
-      @onClose="(canOpen = false), (hasClosed = true)"
+      @onClose="onClose"
       @sendBarrage="onAfterSending"
     />
     <Barrage :wish="wish" :canStart="canStart" />
@@ -148,6 +148,13 @@ export default {
         this.canStart = true;
       }, 800);
     },
+    onClose() {
+      this.canOpen = false;
+      this.hasClosed = true;
+      setTimeout(() => {
+        this.canStart = true;
+      }, 800);
+    }
   },
 };
 </script>
